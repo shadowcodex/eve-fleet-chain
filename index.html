@@ -1,21 +1,209 @@
 <html>
     <head>
-        <title>Kontra's Fleet Thing</title>
+        <title>Fleet XUP</title>
+        <link rel="stylesheet" href="./css/boot.css" type="text/css" />
+        
+        <style>
+            td {
+                text-align: center;
+                vertical-align: middle;
+            }
+            
+            input[type=checkbox]
+            {
+              /* Double-sized Checkboxes */
+              -ms-transform: scale(2); /* IE */
+              -moz-transform: scale(2); /* FF */
+              -webkit-transform: scale(2); /* Safari and Chrome */
+              -o-transform: scale(2); /* Opera */
+              padding: 10px;
+            }
+            
+            #Link {
+                word-wrap: break-word;
+            }
+        </style>
+        
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        
+          ga('create', 'UA-93931053-1', 'auto');
+          ga('send', 'pageview');
+        
+        </script>
     </head>
     <body>
-        Trigger Letter: <input id="trigger" type="text"><br><br>
-        Effect: <input id="effect" type="text"></br><br>
-        Target Letter: <input id="target" type="text"><br><br>
         <br>
-        Chat Paste:<br>
-        <textarea id="chat" rows="10" cols="50"></textarea><br><br>
-        <button id="parse" type="button">Parse!</button><br>
-        <br><br>
-        <ul id="results"></ul>
-        <br><br>
-        Link:<br>
-        <div id="link"></div>
-        <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
-        <script src="./app.js"></script>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="jumbotron">
+                        <h1>Fleet XUP <small>A.K.A. Kontra's Fleet Thingy</small></h1>
+                        <p>Below enable and fill out your parsing information. Then paste your fleet chat into the chat box. Hit parse and go!</p>
+                    </div>        
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <h2>Selections:</h2>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Enable?</th>
+                                <th>Assignment Letter</th>
+                                <th>Effect</th>
+                                <th>Target Letter</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input id="enable1"  type="checkbox"></td>
+                                <td><input id="trigger1" class="form-control" type="text"></td>
+                                <td><input id="effect1" class="form-control" type="text"></td>
+                                <td><input id="target1" class="form-control" type="text"></td>
+                            </tr>
+                            <tr>
+                                <td><input id="enable2"  type="checkbox"></td>
+                                <td><input id="trigger2" class="form-control" type="text"></td>
+                                <td><input id="effect2" class="form-control" type="text"></td>
+                                <td><input id="target2" class="form-control" type="text"></td>
+                            </tr>
+                            <tr>
+                                <td><input id="enable3"  type="checkbox"></td>
+                                <td><input id="trigger3" class="form-control" type="text"></td>
+                                <td><input id="effect3" class="form-control" type="text"></td>
+                                <td><input id="target3" class="form-control" type="text"></td>
+                            </tr>
+                            <tr>
+                                <td><input id="enable4"  type="checkbox"></td>
+                                <td><input id="trigger4" class="form-control" type="text"></td>
+                                <td><input id="effect4" class="form-control" type="text"></td>
+                                <td><input id="target4" class="form-control" type="text"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-5">
+                    <h2>Chat Box:</h2>
+                    <textarea id="chat" class="form-control" rows="10" cols="50"></textarea><br>
+                    <button id="parse" type="button" class="btn btn-warning btn-block">Parse!</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Results:</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Share URL:</div>
+                        <div class="panel-body">
+                            <div id="Link"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="resultsOuter">
+                <div id="resultsAll">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Effect 1 - <span id="effect1title"></span></div>
+                                <div class="panel-body">
+                                    <table id="results1" class="table table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Pilot 1</th>
+                                                <th>Effect</th>
+                                                <th>Pilot 2</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Effect 2 - <span id="effect2title"></span></div>
+                                <div class="panel-body">
+                                    <table id="results2" class="table table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Pilot 1</th>
+                                                <th>Effect</th>
+                                                <th>Pilot 2</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Effect 3 - <span id="effect3title"></span></div>
+                                <div class="panel-body">
+                                    <table id="results3" class="table table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Pilot 1</th>
+                                                <th>Effect</th>
+                                                <th>Pilot 2</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Effect 4 - <span id="effect14title"></span></div>
+                                <div class="panel-body">
+                                    <table id="results4" class="table table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Pilot 1</th>
+                                                <th>Effect</th>
+                                                <th>Pilot 2</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
+        
+        <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyDOhWm3vOORgKaWS5ZM2ibHCg5NtcuMaBs",
+            authDomain: "fleet-link-5fdd6.firebaseapp.com",
+            databaseURL: "https://fleet-link-5fdd6.firebaseio.com",
+            storageBucket: "fleet-link-5fdd6.appspot.com",
+            messagingSenderId: "59684385660"
+          };
+          firebase.initializeApp(config);
+        </script>
+        
+        <script src="./js/jquery.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+        <script src="./js/app.js"></script>
     </body>
 </html>
