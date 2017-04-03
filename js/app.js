@@ -21,6 +21,7 @@ var parse = function(text, trigger, effect, target){
    var rows = "";
    var triggers = [];
    var targets = [];
+   text = text.replace('<', '');
 
    var textA = text.split('\n');
    console.log(textA);
@@ -135,6 +136,8 @@ var updateURL = function(results){
 var data = getUrlParameter('id');
 
 if(data != null){
+   $('#infoHeader').remove();
+   $('#inputData').remove();
    
    var newText = firebase.database().ref('links/' + data + '/data');
    newText.on('value', function(snapshot){
