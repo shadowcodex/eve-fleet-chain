@@ -95,7 +95,7 @@ $('#parse').click(function(){
    var encoded = btoa($('#resultsAll').html());
    var id = generateUUID();
    
-   var url = `https://shadowcodex.github.io/eve-fleet-chain/index.html?id=` + id;
+   var url = `http://fleet.cryrs.org/?id=` + id;
    
    firebase.database().ref('links/' + id).set({
       data: encoded,
@@ -103,7 +103,7 @@ $('#parse').click(function(){
    });
    
    $('#Link a').remove();
-   $('#Link').append(`<a href="./index.html?id=` + id + `">` + url + `</a>`);
+   $('#Link').append(`<a href="./?id=` + id + `">` + url + `</a>`);
 });
 
 
